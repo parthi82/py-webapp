@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <hr>
+    <br>
+        <table>
+        <thead>
+            <tr>
+                <th>Tile</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in contents %}
+
+                <tr>
+                    <td>{{ content.title }}</td>
+                    <td>{{ content.content }}</td>
+                    <td>
+                        <a href="/Posts/{{content.key.id()}}">update</a>
+                        <a href="/Delete/{{content.key.id()}}">delete</a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endautoescape %}
