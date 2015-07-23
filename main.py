@@ -55,6 +55,11 @@ class Posts(webapp2.RequestHandler):
         cnts.put()
         self.redirect('/Posts')
 
+    def delete(self, contents_id):
+        content_key = ndb.Key(Contents, int(contents_id))
+        content_key.delete()
+
+
 
 class UpdatePost(webapp2.RequestHandler):
 
@@ -64,7 +69,7 @@ class UpdatePost(webapp2.RequestHandler):
             <a href="/">Home</a>
             <a href="/Posts">View Posts</a>
             <hr>
-            <form method="POST" action="/Posts/{0}">
+            <form method="POST" action="/UpdatePosts/{0}">
             title:<br>
             <textarea rows="2" cols="70" name="title">{1}
             </textarea>
@@ -100,6 +105,6 @@ class Delete(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', WritePost),
     ('/Posts', Posts),
-    (r'/Posts/(\d+)', UpdatePost),
-    (r'/Delete/(\d+)', Delete)
+    (r'/Posts/(\d+)', Posts),
+    (r'/UpdatePosts/(\d+)', UpdatePost)
 ], debug=True)

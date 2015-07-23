@@ -3,6 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/stylesheet.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/Posts.js" ></script>
     <title>Blog</title>
 </head>
 <body>
@@ -24,8 +27,9 @@
                     <td>{{ content.title }}</td>
                     <td>{{ content.content }}</td>
                     <td>
-                        <a href="/Posts/{{content.key.id()}}">update</a>
-                        <a href="/Delete/{{content.key.id()}}">delete</a>
+                        <a href="/UpdatePosts/{{content.key.id()}}">update</a>
+                        <a id="delete" href>delete</a>
+                        <a id="id" style="display:none">{{content.key.id()}}</a>
                     </td>
                 </tr>
 
